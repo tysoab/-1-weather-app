@@ -25,7 +25,7 @@ export default function App() {
   }
 
   return (
-    <Container className="bg-orange-100 h-screen text-orange-700 text-lg border-[15px] border-orange-700">
+    <Container className="bg-orange-100 min-h-screen text-orange-700 text-lg border-[15px] border-orange-700">
       <Header />
       {content}
       <Footer />

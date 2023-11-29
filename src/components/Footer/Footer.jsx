@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="absolute bottom-5 left-0 right-0 text-gray-600 text-center text-xl">
+    <footer className="text-gray-600 text-center text-xl mt-10 mb-7 md:absolute md:bottom-4 md:right-0 md:left-0">
       <p>
         &copy; copyright |{" "}
         <a

@@ -50,7 +50,7 @@ export default function Form() {
         onSubmit={handleSubmit}
         className="flex flex-col my-10 items-center "
       >
-        <Container className="flex gap-4 md:gap-8 items-center justify-center mx-auto">
+        <Container className="flex flex-col md:flex-row gap-4 md:gap-8 items-center justify-center mx-auto">
           <Select
             label="From"
             option={
