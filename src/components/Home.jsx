@@ -5,8 +5,8 @@ import img_2 from "../assets/305.png";
 
 export default function Home() {
   return (
-    <div className="mt-12">
-      <h1 className="text-center text-2xl md:text-4xl font-bold uppercase border-b-2 border-b-slate-500 pb-5">
+    <div>
+      <h1 className="mt-12 text-center text-2xl md:text-4xl font-bold uppercase border-b-2 border-b-slate-500 pb-5">
         #1 Weather App
       </h1>
 
@@ -42,6 +42,38 @@ export default function Home() {
           </div>
         </div>
       </main>
+
+      <footer
+        className="px-8 py-4 mt-12 grid gap-4 items-center"
+        style={{
+          gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))",
+        }}
+      >
+        <div className="flex items-center text-md md:text-xl font-semibold border-l-4 border-l-slate-500 rounded-lg">
+          <img src={img_1} alt="" />
+          <small>NEW YORK</small>
+        </div>
+        <div className="flex items-center text-md md:text-xl font-semibold border-l-4 border-l-slate-500 rounded-lg">
+          <img src={img_1} alt="" />
+          <small>LONDON</small>
+        </div>
+        <div className="flex items-center text-md md:text-xl font-semibold border-l-4 border-l-slate-500 rounded-lg">
+          <img src={img_1} alt="" />
+          <small>GERMANY</small>
+        </div>
+        <div className="flex items-center text-md md:text-xl font-semibold border-l-4 border-l-slate-500 rounded-lg">
+          <img src={img_1} alt="" />
+          <small>FRANCE</small>
+        </div>
+        <div className="flex items-center text-md md:text-xl font-semibold border-l-4 border-l-slate-500 rounded-lg">
+          <img src={img_1} alt="" />
+          <small>NIGERIA</small>
+        </div>
+        <div className="flex items-center text-md md:text-xl font-semibold border-l-4 border-l-slate-500 rounded-lg">
+          <img src={img_1} alt="" />
+          <small>CHINA</small>
+        </div>
+      </footer>
     </div>
   );
 }
