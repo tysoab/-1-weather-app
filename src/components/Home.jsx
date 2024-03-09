@@ -51,7 +51,7 @@ export default function Home() {
   }, [userInput]);
 
   function handleInput(value) {
-    setUserInput((Input) => value);
+    setUserInput((Input) => value.trim());
   }
 
   function handleWeather(data) {
