@@ -34,3 +34,27 @@ export async function defaultCountries() {
   };
   return countries;
 }
+
+let position;
+navigator.geolocation.getCurrentPosition(
+  (pos) => (position = pos),
+  (reject) => reject
+);
+
+// getLocation();
+export async function fetchUserLocation() {
+  if (position.coords) {
+    const { latitude: lat, longitude: lon } = position.coords;
+    const res = await fetch(
+      `https://geocode.maps.co/reverse?lat=${lat}&lon=${lon}&api_key=65eb7095899e7858423663wyu49f2ed`
+    );
+
+    if (!res.ok) return;
+    const data = await res.json();
+    if (!data) return;
+    const locationData = await fetchCountryWeather(
+      `${data.address.state} ${data.address.country}`
+    );
+    return locationData;
+  }
+}

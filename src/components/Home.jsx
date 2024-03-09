@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import Input from "../ui/Input";
 import img_1 from "../assets/113.png";
 import img_2 from "../assets/305.png";
-import { defaultCountries, fetchCountryWeather } from "../util/http";
+import {
+  defaultCountries,
+  fetchCountryWeather,
+  fetchUserLocation,
+} from "../util/http";
 
 export default function Home() {
   const [userInput, setUserInput] = useState("");
@@ -15,6 +19,18 @@ export default function Home() {
   const paris = countries && countries.paris.data.current.condition.icon;
   const abuja = countries && countries.abuja.data.current.condition.icon;
   const beijing = countries && countries.beijing.data.current.condition.icon;
+
+  // fetch user location
+  useEffect(() => {
+    async function userLocation() {
+      const currLoaction = await fetchUserLocation();
+      if (currLoaction) {
+        handleWeather(currLoaction);
+      }
+    }
+
+    userLocation();
+  }, []);
 
   useEffect(() => {
     async function fetchcountries() {
@@ -29,26 +45,30 @@ export default function Home() {
     const timeoutId = setTimeout(async () => {
       if (userInput.length >= 3) {
         const data = await fetchCountryWeather(userInput);
-
-        setWeather(
-          (weather) =>
-            (weather = {
-              text: data?.data && data.data.current.condition.text,
-              icon: data?.data && data.data.current.condition.icon,
-              humidity: data?.data && data.data.current.humidity,
-              pressure: data?.data && data.data.current.pressure_in,
-              wind: data?.data && data.data.current.wind_mph,
-              cloud: data?.data && data.data.current.cloud,
-              query: data?.data && data.data.location.name,
-              location: data?.data && data.data.location,
-            })
-        );
+        handleWeather(data);
       }
     }, 3000);
   }, [userInput]);
 
   function handleInput(value) {
     setUserInput((Input) => value);
+  }
+
+  function handleWeather(data) {
+    if (weather) setWeather("");
+    setWeather(
+      (weather) =>
+        (weather = {
+          text: data?.data && data.data.current.condition.text,
+          icon: data?.data && data.data.current.condition.icon,
+          humidity: data?.data && data.data.current.humidity,
+          pressure: data?.data && data.data.current.pressure_in,
+          wind: data?.data && data.data.current.wind_mph,
+          cloud: data?.data && data.data.current.cloud,
+          query: data?.data && data.data.location.name,
+          location: data?.data && data.data.location,
+        })
+    );
   }
 
   return (
@@ -71,15 +91,15 @@ export default function Home() {
             className="w-24 md:w-28"
           />
           <small className="text-3xl md:text-4xl  mb-5">
-            {weather ? weather.cloud : 9}
+            {weather ? weather.cloud : "#1"}
             <sup>&deg;c </sup>
           </small>
         </div>
         <p className="text-xl md:text-2xl mx-11 md:mx-60">
-          {weather ? weather.text : "Tallin"}
+          {weather ? weather.text : "#1"}
         </p>
         <p className="text-xl md:text-2xl text-right mr-11 md:mr-60 -mt-2">
-          {weather ? weather.query : "Lagos"}
+          {weather ? weather.query : "#1"}
         </p>
         <div
           className="w-[90%] md:w-[50%] mx-auto gap-3 mt-4 grid"
@@ -90,19 +110,19 @@ export default function Home() {
           <div className="flex flex-col items-center gap-1.5 font-semibold">
             <span className="text-xl">Wind</span>
             <span className="text-lg">
-              {weather ? weather.wind : 30} <sup>mph</sup>
+              {weather ? weather.wind : "#1"} <sup>mph</sup>
             </span>
           </div>
           <div className="flex flex-col items-center gap-1.5 font-semibold">
             <span className="text-xl">Humidity</span>
             <span className="text-lg">
-              {weather ? weather.humidity : 9} <sup>%</sup>
+              {weather ? weather.humidity : "#1"} <sup>%</sup>
             </span>
           </div>
           <div className="flex flex-col items-center gap-1.5 font-semibold">
             <span className="text-xl">Pressure</span>
             <span className="text-lg">
-              {weather ? weather.pressure : 8} <sup>in</sup>
+              {weather ? weather.pressure : "#1"} <sup>in</sup>
             </span>
           </div>
         </div>
