@@ -47,11 +47,11 @@ export default function Home() {
         const data = await fetchCountryWeather(userInput);
         handleWeather(data);
       }
-    }, 3000);
+    }, 5000);
   }, [userInput]);
 
   function handleInput(value) {
-    setUserInput((Input) => value.trim());
+    setUserInput((Input) => value);
   }
 
   function handleWeather(data) {
