@@ -24,10 +24,12 @@ export default function Home() {
   // fetch user location
   useEffect(() => {
     async function userLocation() {
-      const currLoaction = await fetchUserLocation();
-      if (currLoaction) {
-        handleWeather(currLoaction);
-      }
+      setTimeout(async () => {
+        const currLoaction = await fetchUserLocation();
+        if (currLoaction) {
+          handleWeather(currLoaction);
+        }
+      }, 1000);
     }
 
     userLocation();
@@ -48,7 +50,7 @@ export default function Home() {
         const data = await fetchCountryWeather(userInput);
         handleWeather(data);
       }
-    }, 5000);
+    }, 4000);
   }, [userInput]);
 
   function handleInput(value) {
