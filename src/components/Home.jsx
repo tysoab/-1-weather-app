@@ -7,6 +7,7 @@ import {
   fetchCountryWeather,
   fetchUserLocation,
 } from "../util/http";
+import Country from "./Country";
 
 export default function Home() {
   const [userInput, setUserInput] = useState("");
@@ -134,30 +135,12 @@ export default function Home() {
           gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))",
         }}
       >
-        <div className="flex items-center text-md md:text-xl font-semibold border-l-4 border-l-slate-500 rounded-lg">
-          {newyork && <img src={newyork} alt="" />}
-          <small>New york</small>
-        </div>
-        <div className="flex items-center text-md md:text-xl font-semibold border-l-4 border-l-slate-500 rounded-lg">
-          {london && <img src={london} alt="" />}
-          <small>London</small>
-        </div>
-        <div className="flex items-center text-md md:text-xl font-semibold border-l-4 border-l-slate-500 rounded-lg">
-          {berlin && <img src={berlin} alt="" />}
-          <small>Berlin</small>
-        </div>
-        <div className="flex items-center text-md md:text-xl font-semibold border-l-4 border-l-slate-500 rounded-lg">
-          {paris && <img src={paris} alt="" />}
-          <small>Paris</small>
-        </div>
-        <div className="flex items-center text-md md:text-xl font-semibold border-l-4 border-l-slate-500 rounded-lg">
-          {abuja && <img src={abuja} alt="" />}
-          <small>Abuja</small>
-        </div>
-        <div className="flex items-center text-md md:text-xl font-semibold border-l-4 border-l-slate-500 rounded-lg">
-          {beijing && <img src={beijing} alt="" />}
-          <small>Beijing</small>
-        </div>
+        <Country img={newyork} countryName="New York" />
+        <Country img={london} countryName="London" />
+        <Country img={berlin} countryName="Berlin" />
+        <Country img={paris} countryName="Paris" />
+        <Country img={abuja} countryName="Abuja" />
+        <Country img={beijing} countryName="Beijing" />
       </footer>
     </div>
   );
