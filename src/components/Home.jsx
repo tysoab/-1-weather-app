@@ -14,12 +14,20 @@ export default function Home() {
   const [countries, setCountries] = useState("");
   const [weather, setWeather] = useState("");
 
-  const london = countries && countries.london.data.current.condition.icon;
-  const newyork = countries && countries.newyork.data.current.condition.icon;
-  const berlin = countries && countries.berlin.data.current.condition.icon;
-  const paris = countries && countries.paris.data.current.condition.icon;
-  const abuja = countries && countries.abuja.data.current.condition.icon;
-  const beijing = countries && countries.beijing.data.current.condition.icon;
+  const london = countries
+    ? countries.london.data.current.condition.icon
+    : null;
+  const newyork = countries
+    ? countries.newyork.data.current.condition.icon
+    : null;
+  const berlin = countries
+    ? countries.berlin.data.current.condition.icon
+    : null;
+  const paris = countries ? countries.paris.data.current.condition.icon : null;
+  const abuja = countries ? countries.abuja.data.current.condition.icon : null;
+  const beijing = countries
+    ? countries.beijing.data.current.condition.icon
+    : null;
 
   // fetch user location
   useEffect(() => {
